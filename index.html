@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <SCRIPT src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></SCRIPT>
+    
+    <SCRIPT>
+    function personController($scope){
+        $scope.firstname = "Samwise";
+        $scope.lastname = "Gamjee";
+        $scope.quantity = 5;
+        $scope.ticketprice = 15;
+    }
+    </SCRIPT>
+
+</HEAD>
+
+<body>
+    
+<div ng-app="" ng-controller="personController">
+    <P>First Name: <input type="text" ng-model="firstname"><br>
+        Last Name: <input type="text" ng-model="lastname"><br></P>
+    <P ng-bind="lastname"></P>
+    
+    <P>The full name is {{firstname+" "+lastname}}</P>
+    
+    <P>Total cost of tickets bought {{"$"+(quantity*ticketprice)}}</P>
+</div>    
+    
+    
+
+    
+    
+</body>
+
+</HTML>

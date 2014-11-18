@@ -9,6 +9,7 @@
         $scope.lastname = "Gamjee";
         $scope.quantity = 5;
         $scope.ticketprice = 15;
+        $scope.names=['Jani','Hege','Kai']
     }
     </SCRIPT>
 
@@ -23,12 +24,30 @@
     
     <P>The full name is {{firstname+" "+lastname}}</P>
     
-    <P>Total cost of tickets bought {{"$"+(quantity*ticketprice)}}</P>
-</div>    
+    <P>Total cost of tickets bought {{"$"+(quantity*ticketprice)}} -- Done using Expressions</P>
+    <P>Total cost of tickets bought <SPAN ng-bind="'$'+(quantity*ticketprice)"></SPAN> -- Done using ng-bind</P>
     
-    
+    <p>
+    Quantity: <input type="number"	ng-model="quantity">
+    Costs:    <input type="number" ng-model="ticketprice">
+
+
+        <BR>Total in dollar: {{ quantity * ticketprice }}
 
     
+    </p>
+    
+    <P>
+    <ul>
+        <li ng-repeat ="x in names" >
+            {{x}}
+        </li>
+        </ul>    
+        
+    </P>
+    
+    
+</div>    
     
 </body>
 

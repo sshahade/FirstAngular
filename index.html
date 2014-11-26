@@ -2,52 +2,79 @@
 <HTML>
 <HEAD>
     <SCRIPT src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></SCRIPT>
-    
-    <SCRIPT>
-    function personController($scope){
-        $scope.firstname = "Samwise";
-        $scope.lastname = "Gamjee";
-        $scope.quantity = 5;
-        $scope.ticketprice = 15;
-        $scope.names=['Jani','Hege','Kai']
-    }
-    </SCRIPT>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/FirstAngular.css">
 
 </HEAD>
 
 <body>
     
-<div ng-app="" ng-controller="personController">
+<div ng-app="myApp" ng-controller="personController">
     <P>First Name: <input type="text" ng-model="firstname"><br>
         Last Name: <input type="text" ng-model="lastname"><br></P>
-    <P ng-bind="lastname"></P>
+    <P ng-bind="lastname | uppercase"></P>
     
-    <P>The full name is {{firstname+" "+lastname}}</P>
+    <P>The full name is {{firstname+" "+(lastname | uppercase)}}</P>
     
-    <P>Total cost of tickets bought {{"$"+(quantity*ticketprice)}} -- Done using Expressions</P>
-    <P>Total cost of tickets bought <SPAN ng-bind="'$'+(quantity*ticketprice)"></SPAN> -- Done using ng-bind</P>
+    <P>Total cost of tickets bought {{(quantity*ticketprice) | currency}} -- Done using Expressions</P>
+    <P>Total cost of tickets bought <SPAN ng-bind="(quantity*ticketprice) | currency"></SPAN> -- Done using ng-bind</P>
     
     <p>
     Quantity: <input type="number"	ng-model="quantity">
     Costs:    <input type="number" ng-model="ticketprice">
 
 
-        <BR>Total in dollar: {{ quantity * ticketprice }}
+        <BR>Total in dollar: {{ (quantity * ticketprice) | currency }}
 
     
     </p>
-    
+           
+    <!-- Display JSON Data as list -->
     <P>
-    <ul>
-        <li ng-repeat ="x in names" >
-            {{x}}
-        </li>
+        <!-- Disable filter function on user input. -->
+        <input type="checkbox" value="false" ng-model="mySwitch1">Disable Filter<br><br>
+        <input type="text" ng-disabled="mySwitch1" ng-model="test">
+        <ul>
+            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
+                {{ x.Name +", "+ x.Country }}
+            </li>
         </ul>    
+    </P>
+   
+        
+        <P>
+        <!-- Hide filter & entire list using ng-hide directive on user input of a button. -->
+            <button ng-show="myHideBtnStatus" ng-Click= "toggle()">Hide List</button>
+            <button ng-hide="myShowBtnStatus" ng-Click= "toggle()">Show List</button><br><br>
+        <input type="text" ng-show="myDataShowStatus" ng-model="test">
+        <div ng-show="myDataShowStatus">
+            <ul>
+            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
+                {{ x.Name +", "+ x.Country }}
+            </li>
+            </ul>
+        </div>
+    </P>
+       
+        
+       <!-- Display JSON Data in table -->
+    <P><!-- Enable view checkbox us ng-show -->
+        
+        <input type="checkbox" value="false" ng-model="mySwitch">Show Filter<br><br>
+
+        <input type="text" ng-show="mySwitch" ng-model="test2">
+    <table>
+        <tr ng-repeat="x in names | filter:test2 | orderBy:'Country'">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.City }}</td>
+            <td>{{ x.Country }}</td>
+        </tr>
+    </table>    
         
     </P>
-    
-    
 </div>    
+    <SCRIPT src= "Modules/myApp.js"></SCRIPT>
+    <SCRIPT src= "Controllers/personController.js"></SCRIPT>
     
 </body>
 

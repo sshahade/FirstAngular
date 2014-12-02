@@ -1,0 +1,49 @@
+<div>
+    <!-- Display JSON Data as list -->
+    <P>
+        <!-- Disable filter function on user input. -->
+        <input type="checkbox" value="false" ng-model="mySwitch1">Disable Filter<br><br>
+        <input type="text" ng-disabled="mySwitch1" ng-model="test">
+        <ul>
+            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
+                {{ x.Name +", "+ x.Country }}
+            </li>
+        </ul>    
+    </P>
+   
+        
+        <P>
+        <!-- Hide filter & entire list using ng-hide directive on user input of a button. -->
+            <button ng-show="myHideBtnStatus" ng-Click= "toggle()">Hide List</button>
+            <button ng-hide="myShowBtnStatus" ng-Click= "toggle()">Show List</button><br><br>
+        <input type="text" ng-show="myDataShowStatus" ng-model="test">
+        <div ng-show="myDataShowStatus">
+            <ul>
+            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
+                {{ x.Name +", "+ x.Country }}
+            </li>
+            </ul>
+        </div>
+    </P>
+        
+        
+       <!-- Display JSON Data in table -->
+    <P><!-- Enable view checkbox us ng-show -->
+        
+        <input type="checkbox" value="false" ng-model="mySwitch">Show Filter<br><br>
+
+        <input type="text" ng-show="mySwitch" ng-model="test2">
+    <table>
+        <tr ng-repeat="x in names | filter:test2 | orderBy:'Country'">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.City }}</td>
+            <td>{{ x.Country }}</td>
+        </tr>
+    </table>    
+        
+    </P>
+</div>    
+
+ <!--  <SCRIPT src= "Scripts/myApp.js"></SCRIPT>
+    <SCRIPT src= "Components/bizDirectory/bizDirectoryController.js"></SCRIPT> -->
+    

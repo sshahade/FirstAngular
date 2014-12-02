@@ -1,0 +1,23 @@
+<div>
+    <P>First Name: <input type="text" ng-model="firstname"><br>
+        Last Name: <input type="text" ng-model="lastname"><br></P>
+    <P ng-bind="lastname | uppercase"></P>
+    
+    <P>The full name is {{firstname+" "+(lastname | uppercase)}}</P>
+    
+    <P>Total cost of tickets bought {{(quantity*ticketprice) | currency}} -- Done using Expressions</P>
+    <P>Total cost of tickets bought <SPAN ng-bind="(quantity*ticketprice) | currency"></SPAN> -- Done using ng-bind</P>
+    
+    <p>
+    Quantity: <input type="number"	ng-model="quantity">
+    Costs:    <input type="number" ng-model="ticketprice">
+
+
+        <BR>Total in dollar: {{ (quantity * ticketprice) | currency }}
+
+    
+    </p>
+<div>
+
+<!-- <SCRIPT src= "Scripts/myApp.js"></SCRIPT>
+<SCRIPT src= "Components/personName/personController.js"></SCRIPT> -->

@@ -1,80 +1,48 @@
 <!DOCTYPE html>
-<HTML>
+<HTML ng-app="myApp">
 <HEAD>
+<!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
     <SCRIPT src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></SCRIPT>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="CSS/FirstAngular.css">
 
 </HEAD>
 
-<body>
+<body controller='homeController'>
     
-<div ng-app="myApp" ng-controller="personController">
-    <P>First Name: <input type="text" ng-model="firstname"><br>
-        Last Name: <input type="text" ng-model="lastname"><br></P>
-    <P ng-bind="lastname | uppercase"></P>
-    
-    <P>The full name is {{firstname+" "+(lastname | uppercase)}}</P>
-    
-    <P>Total cost of tickets bought {{(quantity*ticketprice) | currency}} -- Done using Expressions</P>
-    <P>Total cost of tickets bought <SPAN ng-bind="(quantity*ticketprice) | currency"></SPAN> -- Done using ng-bind</P>
-    
-    <p>
-    Quantity: <input type="number"	ng-model="quantity">
-    Costs:    <input type="number" ng-model="ticketprice">
+        <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div>
 
-
-        <BR>Total in dollar: {{ (quantity * ticketprice) | currency }}
-
-    
-    </p>
-           
-    <!-- Display JSON Data as list -->
-    <P>
-        <!-- Disable filter function on user input. -->
-        <input type="checkbox" value="false" ng-model="mySwitch1">Disable Filter<br><br>
-        <input type="text" ng-disabled="mySwitch1" ng-model="test">
-        <ul>
-            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
-                {{ x.Name +", "+ x.Country }}
-            </li>
-        </ul>    
-    </P>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#persons"><i class="fa fa-shield"></i> Person Info</a></li>
+                    <li><a href="#bizDirectory"><i class="fa fa-comment"></i> Biz Directory</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
    
+    <div id="main">
+        {{ homeMessage }}
         
-        <P>
-        <!-- Hide filter & entire list using ng-hide directive on user input of a button. -->
-            <button ng-show="myHideBtnStatus" ng-Click= "toggle()">Hide List</button>
-            <button ng-hide="myShowBtnStatus" ng-Click= "toggle()">Show List</button><br><br>
-        <input type="text" ng-show="myDataShowStatus" ng-model="test">
-        <div ng-show="myDataShowStatus">
-            <ul>
-            <li ng-repeat ="x in names | filter:test | orderBy:'Country'" >
-                {{ x.Name +", "+ x.Country }}
-            </li>
-            </ul>
-        </div>
-    </P>
-       
-        
-       <!-- Display JSON Data in table -->
-    <P><!-- Enable view checkbox us ng-show -->
-        
-        <input type="checkbox" value="false" ng-model="mySwitch">Show Filter<br><br>
-
-        <input type="text" ng-show="mySwitch" ng-model="test2">
-    <table>
-        <tr ng-repeat="x in names | filter:test2 | orderBy:'Country'">
-            <td>{{ x.Name }}</td>
-            <td>{{ x.City }}</td>
-            <td>{{ x.Country }}</td>
-        </tr>
-    </table>    
-        
-    </P>
-</div>    
-    <SCRIPT src= "Modules/myApp.js"></SCRIPT>
-    <SCRIPT src= "Controllers/personController.js"></SCRIPT>
+      <!--   <div ng-view></div> -->
+    </div>
+    <SCRIPT src= "Scripts/myApp.js"></SCRIPT>
+    <SCRIPT src= "Components/personName/personController.js"></SCRIPT>
+    <SCRIPT src= "Components/bizDirectory/bizDirectoryController.js"></SCRIPT>
+    <SCRIPT src= "Components/home/homeController.js"></SCRIPT>
     
 </body>
 

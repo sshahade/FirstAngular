@@ -16,7 +16,7 @@
 
 </HEAD>
 
-<body controller='homeController'>
+<body>
     
         <!-- HEADER AND NAVBAR -->
         <header>
@@ -27,18 +27,17 @@
                 </div>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="#/persons"><i class="fa fa-shield"></i> Person Info</a></li>
-                    <li><a href="#/bizDirectory"><i class="fa fa-comment"></i> Biz Directory</a></li>
+                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="/persons"><i class="fa fa-shield"></i> Person Info</a></li>
+                    <li><a href="/bizDirectory"><i class="fa fa-comment"></i> Biz Directory</a></li>
                 </ul>
             </div>
             </nav>
         </header>
    
     <div id="main">
-        {{ homeMessage }}
-        
-      <!--   <div ng-view></div> -->
+              
+      <div ng-view></div>
     </div>
     <SCRIPT src= "Scripts/myApp.js"></SCRIPT>
     <SCRIPT src= "Components/personName/personController.js"></SCRIPT>

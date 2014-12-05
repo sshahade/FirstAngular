@@ -1,4 +1,4 @@
-app.controller('homeController', function($Scope) {
+app.controller('homeController', function($scope) {
     
-   $Scope.homeMessage = 'Alright - this is just the start. Click on something in the menu'; 
+   $scope.homeMessage = 'Alright - this is just the start. Click on something in the menu'; 
 });
